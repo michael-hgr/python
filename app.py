@@ -4,6 +4,10 @@ from prognose import prognoseMonthlyData
 
 app = Flask(__name__)
 
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify({"message": "Willkommen bei der Heliodata API! Verwende POST /predict, um eine Prognose zu erstellen."})
+
 @app.route('/predict', methods=['POST'])
 def predict():
     print("POST-Anfrage empfangen")  
