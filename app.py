@@ -71,7 +71,7 @@ def predict():
             "PHPSESSID": userID
         }
 
-        url = "http://localhost/HeliodataNeu/php/processData.php" 
+        url = "https://heliodata.digbizmistelbach.info/php/processData.php" 
         response = requests.post(url, json=data)
 
         # Antwort zurück an den Client (PHP)
