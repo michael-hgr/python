@@ -60,7 +60,7 @@ def predict():
         loss = 20
 
         # Prognose mit den übergebenen Parametern und festem "loss"-Wert generieren
-        prognoseResult = prognoseMonthlyData(latitude, longitude, peakpower, loss, angle, aspect_numeric, mountingplace)
+        prognoseResult, optimal_slope, optimal_azimuth = prognoseMonthlyData(latitude, longitude, peakpower, loss, angle, aspect_numeric, mountingplace)
 
         # Daten, die an PHP gesendet werden sollen (nur 'ds' und 'yhat')
         data = {
@@ -68,6 +68,8 @@ def predict():
                 {"ds": row['ds'].strftime('%Y-%m-%d'), "yhat": row['yhat']} 
                 for row in prognoseResult
             ],
+            "optimal_slope": optimal_slope,
+            "optimal_azimuth": optimal_azimuth,
             "PHPSESSID": userID
         }
 
