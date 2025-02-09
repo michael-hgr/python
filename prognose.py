@@ -4,7 +4,7 @@ from monthlyDataFinal import monthlyData
 
 
 def prognoseMonthlyData(latitude, longitude, peakpower, loss, angle, aspect, mountingplace):
-    monthly_energy = monthlyData(latitude, longitude, peakpower, loss, angle, aspect, mountingplace)
+    monthly_energy, optimal_slope, optimal_azimuth = monthlyData(latitude, longitude, peakpower, loss, angle, aspect, mountingplace)
 
     model = Prophet(yearly_seasonality=True, weekly_seasonality=False, growth='flat', changepoint_prior_scale=0.1)
     model.add_seasonality(name='monthly', period=30.5, fourier_order=2)
@@ -23,4 +23,4 @@ def prognoseMonthlyData(latitude, longitude, peakpower, loss, angle, aspect, mou
     prognoseResult = forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']]
 
     
-    return prognoseResult.to_dict(orient='records')
+    return prognoseResult.to_dict(orient='records'), optimal_slope, optimal_azimuth
