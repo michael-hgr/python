@@ -50,6 +50,6 @@ def monthlyData(latitude, longitude, peakpower, loss, angle, aspect, mountingpla
             monthly_energy = df.groupby('YearMonth')['Energie_kWh'].sum().reset_index()
             monthly_energy.rename(columns={"YearMonth": "ds", "Energie_kWh": "y"}, inplace=True)
             monthly_energy['ds'] = pd.to_datetime(monthly_energy['ds'].astype(str))
-            return monthly_energy
+            return monthly_energy, optimal_slope, optimal_azimuth
     else:
         raise ConnectionError(f"Fehler bei der Anfrage. Status Code: {response.status_code}")
