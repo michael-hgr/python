@@ -49,6 +49,10 @@ def predict():
             'east': -90,   # Osten -> -90°
             'south': 0,  # Süden -> 180°
             'west': 90     # Westen -> 90°
+            'northeast': 45,  # Nordosten -> 45°
+            'southeast': -45, # Südosten -> -45°
+            'southwest': 135, # Südwesten -> 135°
+            'northwest': -135 # Nordwesten -> -135°
         }
         
         if aspect.lower() not in aspect_dict:
