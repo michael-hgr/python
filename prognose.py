@@ -12,7 +12,7 @@ def prognoseMonthlyData(latitude, longitude, peakpower, loss, angle, aspect, mou
     
     model.fit(monthly_energy)
 
-    future = model.make_future_dataframe(periods=120, freq='MS')
+    future = model.make_future_dataframe(periods=180, freq='MS')
     future = future[future['ds'].dt.year >= 2024]
     
     forecast = model.predict(future)
