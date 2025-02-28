@@ -61,7 +61,7 @@ def predict():
         aspect_numeric = aspect_dict[aspect.lower()]
 
         # Setze den Wert für "loss" fest auf 15
-        loss = 15
+        loss = 10
 
         # Prognose mit den übergebenen Parametern und festem "loss"-Wert generieren
         prognoseResult, optimal_slope, optimal_azimuth = prognoseMonthlyData(latitude, longitude, peakpower, loss, angle, aspect_numeric, mountingplace)
